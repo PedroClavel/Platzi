@@ -15,7 +15,7 @@
     <strong *ngIf="nameField.touched && nameField.hasError('required')">Este campo es requerido.</strong>
   </p>
   <p>
-    <strong *ngIf="nameField.touched && nameField.hasError('maxLength')">Este campo solo permite tener 10 caracteres.</strong>
+    <strong *ngIf="nameField.touched && nameField.hasError('maxlength')">Este campo solo permite tener 10 caracteres.</strong>
   </p>
 </div>
 
@@ -45,8 +45,22 @@
 <p>
   phone: {{ phoneField.value }}
 
-  <input type = "tel" [formControl] = "phoneField"/>
+  <input
+  [class.is-Valid] = "validatorFieldBasicForm.isFieldIsValid(phoneField)"
+  [class.is-inValid] = "validatorFieldBasicForm.isFieldIsInvalid(phoneField)"
+  type = "tel"
+  [formControl] = "phoneField"/>
 </p>
+
+
+<div class="messages" [class.active] = "validatorFieldBasicForm.isFieldIsInvalid(phoneField)">
+  <p>
+    <strong *ngIf="phoneField.touched && phoneField.hasError('required')">Este campo es requerido.</strong>
+  </p>
+  <p>
+    <strong *ngIf="phoneField.touched && phoneField.hasError('maxlength')">Este campo solo permite tener 10 caracteres.</strong>
+  </p>
+</div>
 
 <p>
   date: {{ dateField.value }}

@@ -11,9 +11,9 @@ import { ValidatorFieldBasicForm } from '../basic-form/basic-form-validator';
 })
 export class BasicFormComponent implements OnInit {
 
-  protected nameField = new FormControl('', [Validators.required, Validators.maxLength(10)]);
+  nameField = new FormControl('', [Validators.required, Validators.maxLength(10)]);
   emailField = new FormControl('', [Validators.required, Validators.email]);
-  phoneField = new FormControl('');
+  phoneField = new FormControl('', [Validators.required, Validators.maxLength(10)]);
   dateField = new FormControl('');
   colorField = new FormControl('#000000');
   rangeField = new FormControl('');
