@@ -1,0 +1,125 @@
+<p>
+  name: {{ nameField.value }}
+
+  <input
+  [class.is-Valid] = "validatorFieldBasicForm.isFieldIsValid(nameField)"
+  [class.is-inValid] = "validatorFieldBasicForm.isFieldIsInvalid(nameField)"
+  type = "text"
+  [formControl] = "nameField"/>
+
+  <button [disabled]="nameField.invalid" (click) = "getNameValue()">Get value</button>
+</p>
+
+<div class="messages" [class.active] = "validatorFieldBasicForm.isFieldIsInvalid(nameField)">
+  <p>
+    <strong *ngIf="nameField.touched && nameField.hasError('required')">Este campo es requerido.</strong>
+  </p>
+  <p>
+    <strong *ngIf="nameField.touched && nameField.hasError('maxLength')">Este campo solo permite tener 10 caracteres.</strong>
+  </p>
+</div>
+
+
+
+<p>
+  email: {{ emailField.value }}
+
+  <input
+  [class.is-Valid] = "validatorFieldBasicForm.isFieldIsValid(emailField)"
+  [class.is-inValid] = "validatorFieldBasicForm.isFieldIsInvalid(emailField)"
+  type = "email"
+  [formControl] = "emailField"
+  placeholder="example@correo.com"/>
+
+</p>
+
+<div class="messages" [class.active] = "validatorFieldBasicForm.isFieldIsInvalid(emailField)">
+  <p>
+    <strong *ngIf="emailField.touched && emailField.hasError('required')">Este campo es requerido.</strong>
+  </p>
+  <p>
+    <strong *ngIf="emailField.touched && emailField.hasError('email')">Este no tiene el formato correcto.</strong>
+  </p>
+</div>
+
+<p>
+  phone: {{ phoneField.value }}
+
+  <input type = "tel" [formControl] = "phoneField"/>
+</p>
+
+<p>
+  date: {{ dateField.value }}
+
+  <input type = "date" [formControl] = "dateField"/>
+</p>
+
+<p>
+  color: {{ colorField.value }}
+
+  <input type = "color" [formControl] = "colorField"/>
+</p>
+
+<p>
+  range: {{ rangeField.value }}
+
+  <input type = "range" [formControl] = "rangeField"/>
+</p>
+
+<p>
+  category: {{ categoryField.value }}
+
+ <select [formControl] = "categoryField">
+  <option value = "value1">Valor 1</option>
+  <option value = "value2">Valor 2</option>
+  <option value = "value3">Valor 3</option>
+
+ </select>
+
+</p>
+
+<p>
+  tag: {{ tagField.value }}
+
+ <select [formControl] = "tagField" multiple>
+  <option value = "tag1">Valor 1</option>
+  <option value = "tag2">Valor 2</option>
+  <option value = "tag3">Valor 3</option>
+
+ </select>
+
+</p>
+
+<p>
+  Grupos: {{ radioField.value }}
+  <label>
+    Opcion1
+  <input type = "radio" name = "group1" value="Opcion1" [formControl] = "radioField"/>
+
+  </label>
+  <label>
+    Opcion2
+  <input type = "radio" name = "group1" value="Opcion2" [formControl] = "radioField"/>
+  </label>
+  <label>
+    Opcion3
+    <input type = "radio" name = "group1" value="Opcion3" [formControl] = "radioField"/>
+  </label>
+</p>
+
+
+<p>
+  Category: {{ radioCatField.value }}
+  <label>
+    Category1
+  <input type = "radio" name = "category" value="Category1" [formControl] = "radioCatField"/>
+
+  </label>
+  <label>
+    Category2
+  <input type = "radio" name = "category" value="Category2" [formControl] = "radioCatField"/>
+  </label>
+  <label>Category3
+    <input type = "radio" name = "category" value="Category3" [formControl] = "radioCatField"/>
+  </label>
+</p>
