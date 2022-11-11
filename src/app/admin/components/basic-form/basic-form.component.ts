@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { FormControl, Validators } from  '@angular/forms';
+import { FormControl, Validators, FormGroup } from  '@angular/forms';
 
 import { ValidatorFieldBasicForm } from '../basic-form/basic-form-validator';
 
@@ -11,6 +11,14 @@ import { ValidatorFieldBasicForm } from '../basic-form/basic-form-validator';
 })
 export class BasicFormComponent implements OnInit {
 
+  validatorFieldBasicForm = new ValidatorFieldBasicForm();
+
+  form = new FormGroup({
+    name : new FormControl('', [Validators.required, Validators.maxLength(10)]),
+    email : new FormControl('', [Validators.required, Validators.email]),
+    phone : new FormControl('', [Validators.required, Validators.maxLength(10)]),
+    });
+
   nameField = new FormControl('', [Validators.required, Validators.maxLength(10)]);
   emailField = new FormControl('', [Validators.required, Validators.email]);
   phoneField = new FormControl('', [Validators.required, Validators.maxLength(10)]);
@@ -18,12 +26,11 @@ export class BasicFormComponent implements OnInit {
   colorField = new FormControl('#000000');
   rangeField = new FormControl('');
 
-categoryField =  new FormControl('value1');
-tagField =  new FormControl('value1');
-radioField =  new FormControl('Opcion2');
-radioCatField = new FormControl();
+  categoryField =  new FormControl('value1');
+  tagField =  new FormControl('value1');
+  radioField =  new FormControl('Opcion2');
+  radioCatField = new FormControl();
 
-validatorFieldBasicForm = new ValidatorFieldBasicForm();
 
   constructor() { }
 

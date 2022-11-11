@@ -1,3 +1,73 @@
+<form [formGroup]="form">
+ <h1>Form Group:</h1>
+
+  <p>
+
+  name: {{ form.get('name').value }}
+
+    <input
+    [class.is-Valid] = "validatorFieldBasicForm.isFieldIsValidFormGroup(form, 'name')"
+    [class.is-inValid] = "validatorFieldBasicForm.isFieldIsInvalidFormGroup(form, 'name')"
+    type = "text"
+    formControlName = "name"/>
+
+    <button [disabled]="validatorFieldBasicForm.isFieldIsInvalidFormGroup(form, 'name')" (click) = "getNameValue()">Get value</button>
+  </p>
+
+  <div class="messages" [class.active] = "validatorFieldBasicForm.isFieldIsInvalidFormGroup(form, 'name')">
+    <p>
+      <strong *ngIf="form.get('name').touched && form.get('name').hasError('required')">Este campo es requerido.</strong>
+    </p>
+    <p>
+      <strong *ngIf="form.get('name').touched && form.get('name').hasError('maxlength')">Este campo solo permite tener 10 caracteres.</strong>
+    </p>
+  </div>
+
+
+<p>
+  email: {{ form.get('email').value }}
+
+  <input
+  [class.is-Valid] = "validatorFieldBasicForm.isFieldIsValidFormGroup(form, 'email')"
+  [class.is-inValid] = "validatorFieldBasicForm.isFieldIsInvalidFormGroup(form, 'email')"
+  type = "email"
+  formControlName = "email"
+  placeholder="example@correo.com"/>
+
+</p>
+
+<div class="messages" [class.active] = "validatorFieldBasicForm.isFieldIsInvalidFormGroup(form, 'email')">
+  <p>
+    <strong *ngIf="form.get('email').touched && form.get('email').hasError('required')">Este campo es requerido.</strong>
+  </p>
+  <p>
+    <strong *ngIf="form.get('email').touched && form.get('email').hasError('email')">Este no tiene el formato correcto.</strong>
+  </p>
+</div>
+
+<p>
+  phone: {{ form.get('phone').value }}
+
+  <input
+  [class.is-Valid] = "validatorFieldBasicForm.isFieldIsValidFormGroup(form, 'phone')"
+  [class.is-inValid] = "validatorFieldBasicForm.isFieldIsInvalidFormGroup(form, 'phone')"
+  type = "tel"
+  formControlName = "phone"
+  />
+</p>
+
+
+<div class="messages" [class.active] = "validatorFieldBasicForm.isFieldIsInvalidFormGroup(form, 'phone')">
+  <p>
+    <strong *ngIf="form.get('phone').touched && form.get('phone').hasError('required')">Este campo es requerido.</strong>
+  </p>
+  <p>
+    <strong *ngIf="form.get('phone').touched && form.get('phone').hasError('maxlength')">Este campo solo permite tener 10 caracteres.</strong>
+  </p>
+</div>
+</form>
+
+<h1>Campos Normales</h1>
 <p>
   name: {{ nameField.value }}
 

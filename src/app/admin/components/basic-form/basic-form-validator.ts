@@ -1,4 +1,4 @@
-import { FormControl } from '@angular/forms'
+import { FormControl, FormGroup } from '@angular/forms';
 
 export class ValidatorFieldBasicForm{
   isFieldIsValid(field:FormControl){
@@ -7,5 +7,13 @@ export class ValidatorFieldBasicForm{
 
   isFieldIsInvalid(field:FormControl){
     return field.touched && field.invalid;
+  }
+
+  isFieldIsValidFormGroup(form:FormGroup, name:string){
+    return form.get(name).touched && form.get(name).valid;
+  }
+
+  isFieldIsInvalidFormGroup(form:FormGroup, name:string){
+    return form.get(name).touched && form.get(name).invalid;
   }
 }
