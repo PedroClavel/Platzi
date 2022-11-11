@@ -16,10 +16,13 @@
 
   <div class="messages" [class.active] = "validatorFieldBasicForm.isFieldIsInvalidFormGroup(form, 'name')">
     <p>
-      <strong *ngIf="form.get('name').touched && form.get('name').hasError('required')">Este campo es requerido.</strong>
+      <strong *ngIf="form.get('name').hasError('required')">Este campo es requerido.</strong>
     </p>
     <p>
-      <strong *ngIf="form.get('name').touched && form.get('name').hasError('maxlength')">Este campo solo permite tener 10 caracteres.</strong>
+      <strong *ngIf="form.get('name').hasError('maxlength')">Este campo solo permite tener 10 caracteres.</strong>
+    </p>
+    <p>
+      <strong *ngIf="form.get('name').hasError('pattern')">Este campo no debe tener caracteres.</strong>
     </p>
   </div>
 
@@ -65,6 +68,31 @@
     <strong *ngIf="form.get('phone').touched && form.get('phone').hasError('maxlength')">Este campo solo permite tener 10 caracteres.</strong>
   </p>
 </div>
+
+
+<p>
+
+  IP: {{ form.get('ipAddress').value }}
+
+    <input
+    [class.is-Valid] = "validatorFieldBasicForm.isFieldIsValidFormGroup(form, 'ipAddress')"
+    [class.is-inValid] = "validatorFieldBasicForm.isFieldIsInvalidFormGroup(form, 'ipAddress')"
+    type = "text"
+    formControlName = "ipAddress"
+    placeholder="255.255.255.255"
+    />
+
+    <button [disabled]="validatorFieldBasicForm.isFieldIsInvalidFormGroup(form, 'ipAddress')" (click) = "getNameValue()">Get value</button>
+  </p>
+
+  <div class="messages" [class.active] = "validatorFieldBasicForm.isFieldIsInvalidFormGroup(form, 'ipAddress')">
+    <p>
+      <strong *ngIf="form.get('ipAddress').hasError('required')">Este campo es requerido.</strong>
+    </p>
+    <p>
+      <strong *ngIf="form.get('ipAddress').hasError('pattern')">Este campo no tiene el formato correcto.</strong>
+    </p>
+  </div>
 </form>
 
 <h1>Campos Normales</h1>
@@ -77,7 +105,6 @@
   type = "text"
   [formControl] = "nameField"/>
 
-  <button [disabled]="nameField.invalid" (click) = "getNameValue()">Get value</button>
 </p>
 
 <div class="messages" [class.active] = "validatorFieldBasicForm.isFieldIsInvalid(nameField)">
