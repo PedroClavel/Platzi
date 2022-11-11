@@ -1,9 +1,78 @@
+<form [formGroup]="formMaterial">
+  <h1>Form con Angular Material</h1>
+  <mat-form-field appearance="fill">
+    <mat-label>
+      Name: {{ formMaterial.get('name').value }}
+    </mat-label>
+    <input
+    matInput
+    [class.is-Valid] = "validatorFieldBasicForm.isFieldIsValidFormGroup(formMaterial, 'name')"
+    [class.is-inValid] = "validatorFieldBasicForm.isFieldIsInvalidFormGroup(formMaterial, 'name')"
+    type = "text"
+    formControlName = "name"/>
+    <mat-icon matSuffix *ngIf="validatorFieldBasicForm.isFieldIsValidFormGroup(formMaterial, 'name')">done</mat-icon>
+    <mat-icon matSuffix *ngIf="validatorFieldBasicForm.isFieldIsInvalidFormGroup(formMaterial, 'name')">close</mat-icon>
+  </mat-form-field>
+
+  <div class="messages" [class.active] = "validatorFieldBasicForm.isFieldIsInvalidFormGroup(formMaterial, 'name')">
+    <mat-error *ngIf="formMaterial.get('name').hasError('required')">Este campo es requerido.</mat-error>
+    <mat-error *ngIf="formMaterial.get('name').hasError('maxlength')">Este campo solo permite tener 10 caracteres.</mat-error>
+    <mat-error *ngIf="formMaterial.get('name').hasError('pattern')">Este campo no debe tener caracteres.</mat-error>
+  </div>
+
+
+  <mat-form-field appearance="fill">
+    <mat-label>
+      email: {{ formMaterial.get('email').value }}
+    </mat-label>
+    <input
+    matInput
+    [class.is-Valid] = "validatorFieldBasicForm.isFieldIsValidFormGroup(formMaterial, 'email')"
+    [class.is-inValid] = "validatorFieldBasicForm.isFieldIsInvalidFormGroup(formMaterial, 'email')"
+    type = "email"
+    formControlName = "email"
+    placeholder="example@correo.com"/>
+
+    <mat-icon matSuffix *ngIf="validatorFieldBasicForm.isFieldIsValidFormGroup(formMaterial, 'email')">done</mat-icon>
+    <mat-icon matSuffix *ngIf="validatorFieldBasicForm.isFieldIsInvalidFormGroup(formMaterial, 'email')">close</mat-icon>
+  </mat-form-field>
+
+  <div class="messages" [class.active] = "validatorFieldBasicForm.isFieldIsInvalidFormGroup(formMaterial, 'email')">
+    <mat-error *ngIf="formMaterial.get('email').hasError('required')">Este campo es requerido.</mat-error>
+    <mat-error *ngIf="formMaterial.get('email').hasError('email')">Este campo no tiene el formato correcto.</mat-error>
+  </div>
+
+
+  <mat-form-field appearance="fill">
+    <mat-label>
+      phone: {{ formMaterial.get('phone').value }}
+    </mat-label>
+    <input
+    matInput
+    [class.is-Valid] = "validatorFieldBasicForm.isFieldIsValidFormGroup(formMaterial, 'phone')"
+    [class.is-inValid] = "validatorFieldBasicForm.isFieldIsInvalidFormGroup(formMaterial, 'phone')"
+    type = "text"
+    formControlName = "phone"/>
+    <mat-icon matSuffix *ngIf="validatorFieldBasicForm.isFieldIsValidFormGroup(formMaterial, 'phone')">done</mat-icon>
+    <mat-icon matSuffix *ngIf="validatorFieldBasicForm.isFieldIsInvalidFormGroup(formMaterial, 'phone')">close</mat-icon>
+  </mat-form-field>
+
+  <div class="messages" [class.active] = "validatorFieldBasicForm.isFieldIsInvalidFormGroup(formMaterial, 'phone')">
+    <mat-error *ngIf="formMaterial.get('phone').hasError('required')">Este campo es requerido.</mat-error>
+    <mat-error *ngIf="formMaterial.get('phone').hasError('maxlength')">Este campo solo permite tener 10 caracteres.</mat-error>
+    <mat-error *ngIf="formMaterial.get('phone').hasError('pattern')">Este solo debe capturar números.</mat-error>
+  </div>
+</form>
+
+
+
+
 <form [formGroup]="form">
  <h1>Form Group:</h1>
 
   <p>
 
-  name: {{ form.get('name').value }}
+    phone: {{ form.get('name').value }}
 
     <input
     [class.is-Valid] = "validatorFieldBasicForm.isFieldIsValidFormGroup(form, 'name')"

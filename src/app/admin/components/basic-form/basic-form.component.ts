@@ -13,6 +13,12 @@ export class BasicFormComponent implements OnInit {
 
   validatorFieldBasicForm = new ValidatorFieldBasicForm();
 
+  formMaterial = new FormGroup({
+    name : new FormControl('', [Validators.required, Validators.maxLength(10), Validators.pattern(/^[a-zA-Z]+$/)]),
+    email : new FormControl('', [Validators.required, Validators.email]),
+    phone : new FormControl('', [Validators.required, Validators.maxLength(10), Validators.pattern(/^[0-9]+$/)]),
+    });
+
   form = new FormGroup({
     name : new FormControl('', [Validators.required, Validators.maxLength(10), Validators.pattern(/^[a-zA-Z]+$/)]),
     email : new FormControl('', [Validators.required, Validators.email]),
